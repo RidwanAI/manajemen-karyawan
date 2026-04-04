@@ -18,6 +18,7 @@ Aplikasi ini merupakan REST API sederhana untuk manajemen data karyawan mengguna
 - Spring Data JPA
 - PostgreSQL Driver
 - Hibernate Validator
+- Docker
 
 ## Requirement
 
