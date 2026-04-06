@@ -120,28 +120,28 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
 
 - Endpoint API
   - Get All Employees :  
-    /api/employees
+    http://localhost:8081/api/employees
 
   - Create Employee :  
-    /api/employees
+    http://localhost:8081/api/employees
 
   - Update Employee :  
-    /api/employees/{id}
+    http://localhost:8081/api/employees/{id}
 
   - Delete Employee :  
-    /api/employees/{id}
+    http://localhost:8081/api/employees/{id}
 
   - Search Employee :  
-    /api/employees/search
+    http://localhost:8081/api/employees/search
     - Berdasarkan id :  
-      /api/employees/search?id=1
+      http://localhost:8081/api/employees/search?id=1
     - Berdasarkan nama :  
-      /api/employees/search?name=ridwan
+      http://localhost:8081/api/employees/search?name=ridwan
     - Berdasarkan email :  
-      /api/employees/search?email=example@example.com
+      http://localhost:8081/api/employees/search?email=example@example.com
     - Berdasarkan position :  
-      /api/employees/search?position=positionExample
+      http://localhost:8081/api/employees/search?position=positionExample
     - Berdasarkan salary :  
-      /api/employees/search?salary=5000000
+      http://localhost:8081/api/employees/search?salary=5000000
     - Berdasarkan range salary :  
-      /api/employees/search?minSalary=5000000&maxSalary=10000000
+      http://localhost:8081/api/employees/search?minSalary=5000000&maxSalary=10000000
