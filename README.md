@@ -71,8 +71,11 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
 
 ## 2. Konfigurasi Database
 
-- Buat database di PostgreSQL :  
-  `CREATE DATABASE manajemen-karyawan;`
+- Buat database di PostgreSQL :
+
+  ```sql
+  CREATE DATABASE manajemen-karyawan;
+  ```
 
 - Restore database dengan file .sql yang ada di folder => src\main\java\manajemen\karyawan\manajemen_karyawan\database
 
@@ -95,11 +98,16 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
 
 ## 3. Build Project & Running
 
-- Build Project pada terminal menggunakan mvn :  
-  `mvn clean install`
+- Build Project pada terminal menggunakan mvn :
 
-- Jalankan Aplikasi :  
-  `mvn spring-boot:run`
+  ```console
+  mvn clean install
+  ```
+
+- Jalankan Aplikasi :
+  ```console
+  mvn spring-boot:run
+  ```
 
 ## 4. Cara Akses Swagger
 
