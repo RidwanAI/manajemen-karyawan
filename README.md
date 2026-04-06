@@ -86,7 +86,8 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
   server.port=8081
   spring.datasource.url=jdbc:postgresql://localhost:5432/manajemen-karyawan
   spring.datasource.username=postgres
-  spring.datasource.password=root #sesuaikan dengan password postgresql anda
+  #sesuaikan dengan password postgresql anda
+  spring.datasource.password=root
 
   spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
   spring.jpa.hibernate.ddl-auto=update
