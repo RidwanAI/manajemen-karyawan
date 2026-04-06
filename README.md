@@ -65,37 +65,41 @@ src
 
 ## 1. Clone Project
 
-``` git clone https://github.com/RidwanAI/manajemen-karyawan.git ```
+```bash
+git clone https://github.com/RidwanAI/manajemen-karyawan.git
+```
 
 ## 2. Konfigurasi Database
 
 - Buat database di PostgreSQL :  
-  ``` CREATE DATABASE manajemen-karyawan; ```
+  `CREATE DATABASE manajemen-karyawan;`
 
 - Restore database dengan file .sql yang ada di folder => src\main\java\manajemen\karyawan\manajemen_karyawan\database
 
-- Konfigurasi file application.properties yang ada di folder => src\main\resources :  
+- Konfigurasi file application.properties yang ada di folder => src\main\resources :
+
   ```properties
-  spring.application.name=manajemen-karyawan  
-  server.port=8081  
-  spring.datasource.url=jdbc:postgresql://localhost:5432/manajemen-karyawan  
-  spring.datasource.username=postgres  
+  spring.application.name=manajemen-karyawan
+  server.port=8081
+  spring.datasource.url=jdbc:postgresql://localhost:5432/manajemen-karyawan
+  spring.datasource.username=postgres
   spring.datasource.password=root #sesuaikan dengan password postgresql anda
 
-  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect  
-  spring.jpa.hibernate.ddl-auto=update  
-  spring.jpa.show-sql=true  
+  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+  spring.jpa.hibernate.ddl-auto=update
+  spring.jpa.show-sql=true
   spring.jpa.properties.hibernate.format_sql=true
 
   spring.datasource.driver-class-name=org.postgresql.Driver
+  ```
 
 ## 3. Build Project & Running
 
 - Build Project pada terminal menggunakan mvn :  
-  ``` mvn clean install ```
+  `mvn clean install`
 
 - Jalankan Aplikasi :  
-  ``` mvn spring-boot:run ```
+  `mvn spring-boot:run`
 
 ## 4. Cara Akses Swagger
 
