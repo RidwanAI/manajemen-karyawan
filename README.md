@@ -19,6 +19,7 @@ Aplikasi ini merupakan REST API sederhana untuk manajemen data karyawan mengguna
 - PostgreSQL Driver
 - Hibernate Validator
 - Docker
+- Swagger
 
 ## Requirement
 
@@ -26,114 +27,108 @@ Aplikasi ini merupakan REST API sederhana untuk manajemen data karyawan mengguna
 - Maven (versi 3.9.14)
 - PostgreSQL
 
-## Konfigurasi Database
+## Struktur Project
 
-- Buat database di PostgreSQL:
+src  
+├─ main  
+│ ├─ java  
+│ │ └─ manajemen  
+│ │ └─ karyawan  
+│ │ └─ manajemen_karyawan  
+│ │ ├─ controller  
+│ │ │ └─ EmployeeController.java  
+│ │ ├─ database  
+│ │ │ └─ manajemen-karyawan.sql  
+│ │ ├─ entitiy  
+│ │ │ └─ EmployeeEntity.java  
+│ │ ├─ exception  
+│ │ │ ├─ BadRequestException.java  
+│ │ │ ├─ DataNotFoundException.java  
+│ │ │ └─ GlobalExceptionHandler.java  
+│ │ ├─ repository  
+│ │ │ └─ EmployeeRepository.java  
+│ │ ├─ service  
+│ │ │ └─ EmployeeService.java  
+│ │ └─ ManajemenKaryawanApplication.java  
+│ └─ resources  
+│ ├─ static  
+│ ├─ templates  
+│ └─ application.properties  
+└─ test  
+ └─ java  
+ └─ manajemen  
+ └─ karyawan  
+ └─ manajemen_karyawan  
+ └─ ManajemenKaryawanApplicationTests.java
+
+# Cara Menjalankan Aplikasi
+
+## 1. Clone Project
+
+- git clone https://github.com/RidwanAI/manajemen-karyawan.git
+
+## 2. Konfigurasi Database
+
+- Buat database di PostgreSQL :  
   CREATE DATABASE manajemen-karyawan;
 
-- Restore database dengan file .sql yang ada di folder src\main\java\manajemen\karyawan\manajemen_karyawan\database
+- Restore database dengan file .sql yang ada di folder => src\main\java\manajemen\karyawan\manajemen_karyawan\database
 
-- Konfigurasi file application.properties:
+- Konfigurasi file application.properties yang ada di folder => src\main\resources:  
   spring.application.name=manajemen-karyawan
   server.port=8081
   spring.datasource.url=jdbc:postgresql://localhost:5432/manajemen-karyawan
   spring.datasource.username=postgres
-  spring.datasource.password=root
-  
+  spring.datasource.password=root #sesuaikan dengan password postgresql anda
+
   spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
   spring.jpa.hibernate.ddl-auto=update
   spring.jpa.show-sql=true
   spring.jpa.properties.hibernate.format_sql=true
-  
+
   spring.datasource.driver-class-name=org.postgresql.Driver
 
-## Cara Menjalankan Aplikasi
+## 3. Build Project & Running
 
-- Clone Project
-  git clone ??
-
-- Build Project
+- Build Project pada terminal menggunakan mvn :  
   mvn clean install
 
-- Jalankan Aplikasi
+- Jalankan Aplikasi :  
   mvn spring-boot:run
 
-## Akses URL
+## 4. Cara Akses Swagger
 
-- Base URL
+- http://localhost:8081/swagger-ui/index.html
+
+## Map Akses URL
+
+- Base URL :  
   http://localhost:8081/api/employees
 
 - Endpoint API
-  - Get All Employees
+  - Get All Employees :  
     /api/employees
 
-  - Create Employee
+  - Create Employee :  
     /api/employees
 
-  - Update Employee
+  - Update Employee :  
     /api/employees/{id}
 
-  - Delete Employee
+  - Delete Employee :  
     /api/employees/{id}
 
-  - Search Employee
+  - Search Employee :  
     /api/employees/search
-    * Berdasarkan id :
-        /api/employees/search?id=1
-    * Berdasarkan nama :
-        /api/employees/search?name=ridwan
-    * Berdasarkan email :
-        /api/employees/search?email=example@example.com
-    * Berdasarkan position :
-        /api/employees/search?position=positionExample
-    * Berdasarkan salary :
-        /api/employees/search?salary=5000000
-    * Berdasarkan range salary :
-        /api/employees/search?minSalary=5000000&maxSalary=10000000
-
-## Validasi & Global Error Handling
-Validasi Input Menggunakan @Valid
-- name, email, position → tidak boleh kosong
-- salary → wajib dan harus > 0
-
-Global Error Handling Menggunakan @ControllerAdvice
-{
-    "path": "/api/employees/search",
-    "error": "Not Found",
-    "message": "Data karyawan tidak ditemukan",
-    "timestamp": "2026-04-04T08:25:02.1005583",
-    "status": 404
-}
-
-## Struktur Project
-src                                                       
-├─ main                                                   
-│  ├─ java                                                
-│  │  └─ manajemen                                        
-│  │     └─ karyawan                                      
-│  │        └─ manajemen_karyawan                         
-│  │           ├─ controller                              
-│  │           │  └─ EmployeeController.java              
-│  │           ├─ database                                
-│  │           │  └─ manajemen-karyawan.sql               
-│  │           ├─ entitiy                                 
-│  │           │  └─ EmployeeEntity.java                  
-│  │           ├─ exception                               
-│  │           │  ├─ BadRequestException.java             
-│  │           │  ├─ DataNotFoundException.java           
-│  │           │  └─ GlobalExceptionHandler.java          
-│  │           ├─ repository                              
-│  │           │  └─ EmployeeRepository.java              
-│  │           ├─ service                                 
-│  │           │  └─ EmployeeService.java                 
-│  │           └─ ManajemenKaryawanApplication.java       
-│  └─ resources                                           
-│     ├─ static                                           
-│     ├─ templates                                        
-│     └─ application.properties                           
-└─ test                                                   
-   └─ java                                                
-      └─ manajemen                                        
-         └─ karyawan                                      
-            └─ manajemen_karyawan                         
-               └─ ManajemenKaryawanApplicationTests.java  
+    - Berdasarkan id :  
+      /api/employees/search?id=1
+    - Berdasarkan nama :  
+      /api/employees/search?name=ridwan
+    - Berdasarkan email :  
+      /api/employees/search?email=example@example.com
+    - Berdasarkan position :  
+      /api/employees/search?position=positionExample
+    - Berdasarkan salary :  
+      /api/employees/search?salary=5000000
+    - Berdasarkan range salary :  
+      /api/employees/search?minSalary=5000000&maxSalary=10000000
