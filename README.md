@@ -74,7 +74,7 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
 - Buat database di PostgreSQL :
 
   ```sql
-  CREATE DATABASE manajemen-karyawan;
+  CREATE DATABASE "manajemen-karyawan";
   ```
 
 - Restore database dengan file .sql yang ada di folder => src\main\java\manajemen\karyawan\manajemen_karyawan\database
