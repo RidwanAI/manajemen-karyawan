@@ -146,3 +146,68 @@ git clone https://github.com/RidwanAI/manajemen-karyawan.git
       http://localhost:8081/api/employees/search?salary=5000000
     - Berdasarkan range salary :  
       http://localhost:8081/api/employees/search?minSalary=5000000&maxSalary=10000000
+
+# Cara Menjalankan Aplikasi Menggunakan Docker
+
+## 1. Konfigurasi Dockerfile
+
+```properties
+FROM openjdk:25-ea-21-jdk-slim
+
+VOLUME /tmp
+
+ARG JAR_FILE=target/manajemen-karyawan-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+
+EXPOSE 8081
+
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+## 2. Konfigurasi docker-compose.yml
+
+```properties
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: manajemen-karyawan
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: springboot_app
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/manajemen-karyawan
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+
+volumes:
+  postgres_data:
+```
+
+## 3. Cara Menjalankan Docker
+
+- Build file JAR
+
+  ```console
+  mvn clean package
+  ```
+
+- Build & Run Docker
+  ```console
+  docker-compose up --build
+  ```
